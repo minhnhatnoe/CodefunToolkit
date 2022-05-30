@@ -30,8 +30,8 @@ class User(APIObjects):
 
 
 class Submission(APIObjects):
-    attributes = ["id", "problem", "owner", "language", "result",
-                  "runningTime", "submitTime", "isScored", "score"]
+    attributes = {"id", "problem", "owner", "language", "result",
+                  "runningTime", "submitTime", "isScored", "score"}
     special = {"problem": Problem, "owner": User}
 
     def init(self, data: Dict, source: int):
