@@ -8,6 +8,7 @@ class CodefunABC:
     def __init__(self, data: dict):
         '''Boilerplate function for assigning things'''
         for name, new_name in self.attributes.items():
+            if name not in data: continue
             if name in self.special:
                 setattr(self, new_name, self.special[name](data[name]))
             else:
