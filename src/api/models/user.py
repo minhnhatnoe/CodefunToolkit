@@ -1,4 +1,4 @@
-'''Models related to an user'''
+'''Models related to a user'''
 from .base import CodefunABC
 
 class Group(CodefunABC):

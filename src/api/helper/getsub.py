@@ -1,9 +1,10 @@
 '''Async functions for interacting with the Codefun API (consider it the API)'''
 import aiohttp
 import logging
-from .models.submission import Submission
+from ..models.submission import Submission
 
 async def get_submissions(user: str = "", problem: str = "") -> list[Submission]:
+    '''Get all submissions matching a particular set of criteria'''
     request_url = "https://codefun.vn"
     params = {
         "owner": user,

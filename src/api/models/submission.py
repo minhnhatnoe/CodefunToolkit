@@ -1,4 +1,6 @@
 '''Models related to a submission'''
+from dateutil import tz
+from datetime import datetime
 from .base import CodefunABC
 from .problem import Problem
 from .user import User
@@ -32,3 +34,12 @@ class Submission(CodefunABC):
                   "runningTime": "runningTime", "submitTime": "submitTime",
                   "isScored": "isScored", "score": "score", "judge": "judge"}
     special = {"problem": Problem, "owner": User, "judge": JudgeResult}
+    
+    @property
+    def submit_timestamp(self):
+        timezone = tz.tzstr("GMT+7")
+        return datetime.fromtimestamp(self.submitTime, tz=timezone)
+
+    @property
+    def submit_timestamp_notz(self):
+        return datetime.fromtimestamp(self.submitTime)
